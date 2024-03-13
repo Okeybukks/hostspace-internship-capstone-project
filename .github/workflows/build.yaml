@@ -30,18 +30,9 @@ jobs:
     #   run: terraform apply --auto-approve
     #   working-directory: ./terraform
 
-    # - name: Build and Push Container to ECR
-    #   uses: GlueOps/github-actions-build-push-containers@v0.3.6
-    #   working-directory: ./application/backend
-    #   with:
-    #     registry: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace"
-    #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws_default_region: us-east-1
-
-    - name: Build Image
+    - name: Build Backend Image
       working-directory: ./application/backend
-      run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:$GITHUB_RUN_NUMBER .
+      run: docker build -t hostspace/backend:$GITHUB_RUN_NUMBER .
 
     - name: Get Image
       run: docker images
