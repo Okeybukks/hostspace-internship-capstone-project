@@ -1,0 +1,3 @@
+env = {
+    REACT_APP_BACKEND_IP: '{{REACT_APP_BACKEND_IP}}'
+}
