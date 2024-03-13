@@ -16,7 +16,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Upload files
-              uses: hannut91/aws-cli@v1.32.62
+              uses: alboompro/action-awscli@0.1.1
               with:
                 args: s3 ls
               env:
