@@ -37,8 +37,8 @@ jobs:
       working-directory: ./application/backend
       run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER .
 
-    - name: Remove Latest Tag from Previous Image
-      run: aws ecr batch-delete-image --repository-name kanban-backend --image-ids imageTag=latest
+    # - name: Remove Latest Tag from Previous Image
+    #   run: aws ecr batch-delete-image --repository-name kanban-backend --image-ids imageTag=latest
 
     - name: Tag Backend Image
       run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
