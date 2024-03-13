@@ -32,15 +32,15 @@ jobs:
 
     - name: Build Backend Image
       working-directory: ./application/backend
-      run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:$GITHUB_RUN_NUMBER .
+      run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:$GITHUB_RUN_NUMBER .
 
     - name: Tag Backend Image
-      run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:latest
+      run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:latest
 
     - name: Push Backend Image to ECR
       run: |
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:$GITHUB_RUN_NUMBER
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace/backend:latest
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:$GITHUB_RUN_NUMBER
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:latest
         
 
       
