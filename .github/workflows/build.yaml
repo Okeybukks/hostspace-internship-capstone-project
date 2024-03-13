@@ -37,17 +37,27 @@ jobs:
       working-directory: ./application/backend
       run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER .
 
-    # - name: Remove Latest Tag from Previous Image
-    #   run: aws ecr batch-delete-image --repository-name kanban-backend --image-ids imageTag=latest
-
     - name: Tag Backend Image
       run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
 
-      
+
     - name: Push Backend Image to ECR
       run: |
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
     
+    - name: Build Frontend Image
+      working-directory: ./application/frontend
+      run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER .
+  
+    - name: Tag Backend Image
+      run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
+  
+  
+    - name: Push Backend Image to ECR
+      run: |
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:latest
+      
 
       
