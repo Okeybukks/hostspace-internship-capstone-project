@@ -1,6 +1,6 @@
 name: Create Kubernetes Cluster
 
-run-name: ${{ github.actor }}
+run-name: Create Kubernetes Cluster
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Upload files
-              uses: hannut91/aws-cli@v1.18.43
+              uses: hannut91/aws-cli@v1.32.62
               with:
                 args: s3 ls
               env:
