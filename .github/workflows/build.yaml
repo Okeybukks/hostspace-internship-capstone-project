@@ -30,6 +30,9 @@ jobs:
     #   run: terraform apply --auto-approve
     #   working-directory: ./terraform
 
+    - name: Authentocate Dockerclient to ECR
+      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+
     - name: Build Backend Image
       working-directory: ./application/backend
       run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hostspace:$GITHUB_RUN_NUMBER .
