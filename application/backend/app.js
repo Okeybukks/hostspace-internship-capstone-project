@@ -6,7 +6,6 @@ const cors = require('cors')
 
 const app = express();
 
-
 // Middleware for setting custom headers globally
 app.use((req, res, next) => {
     // Set ngrok-skip-browser-warning header
@@ -22,7 +21,6 @@ app.use((req, res, next) => {
     next();
   });
   
-
 app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
