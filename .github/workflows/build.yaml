@@ -51,7 +51,7 @@ jobs:
       run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER .
   
     - name: Tag Backend Image
-      run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
+      run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:latest
   
   
     - name: Push Backend Image to ECR
