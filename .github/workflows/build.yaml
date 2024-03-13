@@ -7,8 +7,8 @@ on:
     branches:
     - main
     paths:
-    - 'application/backend'
-    - 'application/frontend'
+    - 'application/backend/**'
+    - 'application/frontend/**'
 jobs:
   build-docker-images:
 
