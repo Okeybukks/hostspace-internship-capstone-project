@@ -20,10 +20,6 @@ backendPasswordKey: changeme
 backendToken: changeme
 mongodbURL: changeme
 
-service:
-  type: ClusterIP
-  port: 80
-
 # imagePullSecrets: []
 # nameOverride: ""
 # fullnameOverride: ""
