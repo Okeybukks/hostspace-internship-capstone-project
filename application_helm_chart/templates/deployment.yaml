@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: {{ .Release.Name }}-frontend
+  namespace: kanban
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: {{ .Values.images.frontend.repository }}:{{ .Values.images.frontend.tag }}
+        name: kanban-frontend
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        env:
+        - name: REACT_APP_BACKEND_IP
+          value: {{ .Values.kanbanBackendIP }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: backend
+  name: {{ .Release.Name }}-backend
+  namespace: kanban
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: backend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: {{ .Values.images.backend.repository }}:{{ .Values.images.backend.tag }}
+        name: kanban-backend
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
+        - name: PASSWORD_SECRET_KEY
+          value: {{ .Values.backendPasswordKey }}
+        - name: TOKEN_SECRET_KEY
+          value: {{ .Values.backendToken }}
+        - name: MONGODB_URL
+          value: {{ .Values.mongodbURL }}
+        resources: {}
+status: {}

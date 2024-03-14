@@ -6,8 +6,8 @@ on:
   push:
     branches:
     - main
-    # paths:
-    # - 'kubernetes_cluster/**'
+    paths:
+    - 'kubernetes_cluster/**'
 
 jobs:
     create-kubernetes-cluster:
@@ -28,16 +28,16 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 aws-region: us-east-1
 
-            # - name: Create Kubernetes Cluster with eksctl
-            #   working-directory: ./kubernetes_cluster
-            #   run: bash eks_script.sh
+            - name: Create Kubernetes Cluster with eksctl
+              working-directory: ./kubernetes_cluster
+              run: bash eks_script.sh
 
             - name: Update kubectl to use created EKS cluster
               run: aws eks update-kubeconfig --region us-east-1 --name hostspace-cluster
             
-            # - name: Create Node Provisioner for Karpenter
-            #   working-directory: ./kubernetes_cluster
-            #   run: bash node_provisioner.sh
+            - name: Create Node Provisioner for Karpenter
+              working-directory: ./kubernetes_cluster
+              run: bash node_provisioner.sh
 
             - name: Install Argocd
               run: |
