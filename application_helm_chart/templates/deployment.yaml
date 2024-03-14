@@ -20,7 +20,7 @@ spec:
       - image: {{ .Values.images.frontend.repository }}:{{ .Values.images.frontend.tag }}
         name: kanban-frontend
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: 80
         env:
         - name: REACT_APP_BACKEND_IP
           value: {{ .Values.kanbanBackendIP }}
