@@ -1,17 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: kanban-application
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Okeybukks/hostspace-internship-capstone-project.git
     targetRevision: HEAD
-    # path: guestbook
+    path: application_helm_chart
   destination:
     server: https://kubernetes.default.svc
     namespace: kanban
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
