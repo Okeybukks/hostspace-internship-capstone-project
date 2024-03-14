@@ -23,7 +23,7 @@ kind: Service
 metadata:
   labels:
     app: backend-service
-  name: {{ .Release.Name }}-frontend-svc
+  name: {{ .Release.Name }}-backend-svc
   namespace: kanban
 spec:
   ports:
