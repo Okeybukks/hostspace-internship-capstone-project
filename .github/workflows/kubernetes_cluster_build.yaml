@@ -30,4 +30,10 @@ jobs:
 
             - name: List s3 buckets
               run: aws s3 ls
+            
+            - name: Test Helm
+              run: helm version
+
+            - name: Test Kubectl
+              run: kubectl version
                 
