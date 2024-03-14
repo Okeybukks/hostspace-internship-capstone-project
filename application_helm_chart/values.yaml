@@ -8,7 +8,7 @@ kanbanBackendIP: changeme
 
 images:
   frontend:
-      repository: achebeh/factual
+      repository: achebeh/kanban-frontend
       pullPolicy: IfNotPresent
       tag: "latest"
   backend:
