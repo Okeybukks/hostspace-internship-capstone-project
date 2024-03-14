@@ -1,5 +1,5 @@
 #!/bin/bash
-export CLUSTER_NAME="${USER}-karpenter"
+export CLUSTER_NAME="hostspace-cluster"
 
 kubectl apply -f - <<EOF
 apiVersion: karpenter.sh/v1beta1

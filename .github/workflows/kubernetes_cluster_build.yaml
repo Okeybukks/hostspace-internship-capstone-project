@@ -28,12 +28,17 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 aws-region: us-east-1
 
-            - name: List s3 buckets
-              run: aws s3 ls
+            - name: Create Kubernetes Cluster with eksctl
+              working-directory: ./kubernetes_cluster
+              run: bash eks_script.sh
+
+            - name: Update kubectl to use created EKS cluster
+              run: aws update-kubeconfig --region us-east-1 --name hostspace-cluster
             
-            - name: Test Helm
-              run: helm version
+            - name: Create Node Provisioner for Karpenter
+              working-directory: ./kubernetes_cluster
+              run: bash node_provisioner.sh
 
             - name: Test Kubectl
-              run: kubectl version
+              run: kubectl get nodes
                 
