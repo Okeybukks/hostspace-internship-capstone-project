@@ -32,13 +32,15 @@ jobs:
             #   working-directory: ./kubernetes_cluster
             #   run: bash eks_script.sh
 
-            - name: Update kubectl to use created EKS cluster
-              run: aws eks update-kubeconfig --region us-east-1 --name hostspace-cluster
+            # - name: Update kubectl to use created EKS cluster
+            #   run: aws eks update-kubeconfig --region us-east-1 --name hostspace-cluster
             
-            - name: Create Node Provisioner for Karpenter
-              working-directory: ./kubernetes_cluster
-              run: bash node_provisioner.sh
+            # - name: Create Node Provisioner for Karpenter
+            #   working-directory: ./kubernetes_cluster
+            #   run: bash node_provisioner.sh
 
-            - name: Test Kubectl
-              run: kubectl get nodes
+            - name: Install Argocd
+              run: |
+                kubectl create namespace argocd
+                kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
                 
