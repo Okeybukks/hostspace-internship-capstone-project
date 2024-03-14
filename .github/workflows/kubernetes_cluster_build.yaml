@@ -17,9 +17,9 @@ jobs:
             - uses: actions/checkout@v4
               name: Checkout repository
 
-            - name: Install awscli and eksctl
-              working-directory: ./kubernetes_cluster
-              run: bash awscli_eksctl_installation_script.sh
+            # - name: Install awscli and eksctl
+            #   working-directory: ./kubernetes_cluster
+            #   run: bash awscli_eksctl_installation_script.sh
 
             - name: Setup AWS Credentials
               uses: aws-actions/configure-aws-credentials@v2
@@ -28,12 +28,12 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 aws-region: us-east-1
 
-            - name: Create Kubernetes Cluster with eksctl
-              working-directory: ./kubernetes_cluster
-              run: bash eks_script.sh
+            # - name: Create Kubernetes Cluster with eksctl
+            #   working-directory: ./kubernetes_cluster
+            #   run: bash eks_script.sh
 
             - name: Update kubectl to use created EKS cluster
-              run: aws update-kubeconfig --region us-east-1 --name hostspace-cluster
+              run: aws eks update-kubeconfig --region us-east-1 --name hostspace-cluster
             
             - name: Create Node Provisioner for Karpenter
               working-directory: ./kubernetes_cluster
