@@ -1,6 +1,6 @@
 apiVersion: v2
 name: kanban-helm
-description: A Helm chart for Kubernetes
+description: A Helm chart for Kanbn Application
 
 # A chart can be either an 'application' or a 'library' chart.
 #
