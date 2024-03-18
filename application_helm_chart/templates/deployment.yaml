@@ -18,6 +18,9 @@ spec:
   strategy: {}
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: '9090'
       labels:
         app: frontend
     spec:
@@ -48,6 +51,9 @@ spec:
   template:
     metadata:
       creationTimestamp: null
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port:   '9090'
       labels:
         app: backend
     spec:

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-state-metric-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Okeybukks/hostspace-internship-capstone-project.git
+    targetRevision: HEAD
+    path: monitoring_and_observability/kube_state_metric
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
