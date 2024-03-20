@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - repoURL: oci://registry-1.docker.io/kubestar
+  - repoURL: oci://registry-1.docker.io/kubestar/cadvisor
     chart: cadvisor
     targetRevision: 0.1.15
   syncPolicy:
