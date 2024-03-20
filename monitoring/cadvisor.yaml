@@ -11,9 +11,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - repoURL: oci://registry-1.docker.io/kubestar/cadvisor
+  - repoURL: https://ckotzbauer.github.io/helm-charts
     chart: cadvisor
-    targetRevision: 0.1.15
+    targetRevision: 2.3.1
   syncPolicy:
     automated:
       prune: true
