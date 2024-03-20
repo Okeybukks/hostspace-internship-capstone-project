@@ -82,7 +82,7 @@ def sealedSecretConverter(file):
     secret = subprocess.run(['kubeseal', '-o', 'json', '-f', file], capture_output=True, text=True)
     
     # Define output file path for the YAML file
-    secret_file_path = os.path.join(current_dir, 'sealedsecret.yaml')
+    secret_file_path = os.path.join(f'{current_dir}/templates', 'sealedsecret.yaml')
     
     # Write sealed secret JSON output to a YAML file
     with open(secret_file_path, 'w') as file:

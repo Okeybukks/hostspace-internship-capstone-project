@@ -164,3 +164,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 application_helm_chart/templates/mysecret.json
+application_helm_chart/mysecret.json
