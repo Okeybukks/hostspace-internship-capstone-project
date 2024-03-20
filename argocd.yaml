@@ -42,17 +42,17 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring-applications(App-of-Apps)
+  name: monitoring-applications
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Okeybukks/hostspace-internship-capstone-project.git
     targetRevision: HEAD
-    path: monitoring_and_observability/argocd-app-of-apps
+    path: monitoring
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: monitoring
   syncPolicy:
     automated:
       selfHeal: true
