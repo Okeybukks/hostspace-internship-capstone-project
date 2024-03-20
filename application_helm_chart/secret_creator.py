@@ -79,7 +79,7 @@ with open(secret_file_path, 'w') as file:
 def sealedSecretConverter(file):
 
     # Execute kubeseal command and capture the output
-    secret = subprocess.run(['kubeseal', '-o', 'json', '-f', file], capture_output=True, text=True)
+    secret = subprocess.run(['kubeseal', '--scope', 'cluster-wide', '-o', 'json', '-f', file], capture_output=True, text=True)
     
     # Define output file path for the YAML file
     secret_file_path = os.path.join(f'{current_dir}/templates', 'sealedsecret.yaml')
