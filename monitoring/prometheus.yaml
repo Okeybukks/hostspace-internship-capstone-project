@@ -17,6 +17,9 @@ spec:
       helm:
         values: |
             server:
+              persistentVolume:
+                size: 1Gi
+                storageClass: "local-path"
               service:
                 type: NodePort
             global:
