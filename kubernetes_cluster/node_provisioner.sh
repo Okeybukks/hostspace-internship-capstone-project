@@ -31,6 +31,9 @@ spec:
         - key: karpenter.k8s.aws/instance-generation
           operator: Gt
           values: ["2"]
+        - key: "topology.kubernetes.io/zone"
+          operator: In
+          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
       nodeClassRef:
         name: default
   limits:
