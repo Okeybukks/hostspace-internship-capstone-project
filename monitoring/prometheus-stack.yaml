@@ -18,7 +18,8 @@ spec:
         hostRootFsMount:
           enabled: false
       prometheusOperator:
-        service.type: NodePort
+        service:
+          type: NodePort
         admissionWebhooks:
           failurePolicy: Ignore
     targetRevision: 57.0.3

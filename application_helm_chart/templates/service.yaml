@@ -10,13 +10,13 @@ metadata:
   namespace: kanban
 spec:
   ports:
-  - name: http
+  - name: frontend-port
     port: 3000
     protocol: TCP
     targetPort: 80
   selector:
     app: frontend
-  type: ClusterIP
+  type: NodePort
 status:
   loadBalancer: {}
 
@@ -33,13 +33,56 @@ metadata:
   namespace: kanban
 spec:
   ports:
-  - name: http
+  - name: backend-port
     port: 5000
     protocol: TCP
     targetPort: 5000
   selector:
     app: backend
-  type: ClusterIP
+  type: NodePort
 status:
   loadBalancer: {}
 
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-frontend-svc
+  labels:
+    app: frontend-application
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  endpoints:
+  - port: frontend-port
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-backend-svc
+  labels:
+    app: backend-application
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  endpoints:
+  - port: backend-port
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  serviceAccountName: prometheus
+  serviceMonitorSelector:
+    matchLabels:
+      app: frontend-application
+      app: backend-application
+  resources:
+    requests:
+      memory: 400Mi
+  enableAdminAPI: false
