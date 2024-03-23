@@ -1,0 +1,13 @@
+---
+controller:
+  config:
+    compute-full-forward-for: "true"
+    use-forward-headers: "true"
+  ingressClass: nginx
+  ingressClassResource:
+    enabled: true
+    default: false
+  replicaCount: 1
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"

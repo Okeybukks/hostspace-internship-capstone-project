@@ -42,7 +42,8 @@ spec:
       name: mongo-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "local-path"
+      storageClassName: "mongodb-storageclass"
       resources:
         requests:
           storage: 1Gi
+

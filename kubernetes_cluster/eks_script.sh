@@ -28,6 +28,10 @@ metadata:
   version: "${K8S_VERSION}"
   tags:
     karpenter.sh/discovery: ${CLUSTER_NAME}
+    kubernetes.io/cluster/${CLUSTER_NAME}: "owned"
+availabilityZones:
+- us-east-1a
+- us-east-1b
 
 iam:
   withOIDC: true

@@ -31,9 +31,6 @@ spec:
         - key: karpenter.k8s.aws/instance-generation
           operator: Gt
           values: ["2"]
-        - key: "topology.kubernetes.io/zone"
-          operator: In
-          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
       nodeClassRef:
         name: default
   limits:
@@ -49,11 +46,13 @@ metadata:
   name: default
 spec:
   amiFamily: Ubuntu
-  role: "KarpenterNodeRole-${CLUSTER_NAME}" # replace with your cluster name
+  role: "KarpenterNodeRole-${CLUSTER_NAME}"
   subnetSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "${CLUSTER_NAME}" # replace with your cluster name
+        karpenter.sh/discovery: "${CLUSTER_NAME}"
+        kubernetes.io/cluster/${CLUSTER_NAME}: "owned"
   securityGroupSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "${CLUSTER_NAME}" # replace with your cluster name
+        karpenter.sh/discovery: "${CLUSTER_NAME}"
+        kubernetes.io/cluster/${CLUSTER_NAME}: "owned"
 EOF
