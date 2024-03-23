@@ -71,6 +71,19 @@ kubectl exec -it mongodb-0 -n kanban -- mongosh mongodb://username:password@mong
 ```
 If user creation was successful, you should be able to login to the `kanbanDB` database
 
+When I tried to use the creaated user in pod two, I discovered I was having authentication issues, so I had to reconfigure
+the replicaset using this command
+
+```
+rs.reconfig({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongodb-0.mongo:27017" },
+    { _id: 1, host: "mongodb-1.mongo:27017" },
+  ]
+})
+```
+
 ## Environment Variables and Secrets
 
 This URL `mongodb://username:password@mongo:27017/kanbanDB` is value which is to be passed to the `MONGODB_URL` of the backend deployment but no directly. The value should be stored in the `MONGODB_URL` variable in the .env file which should not be pushed to the public.

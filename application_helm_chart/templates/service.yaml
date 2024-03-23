@@ -43,46 +43,46 @@ spec:
 status:
   loadBalancer: {}
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: {{ .Release.Name }}-frontend-svc
-  labels:
-    app: frontend-application
-spec:
-  selector:
-    matchLabels:
-      app: frontend
-  endpoints:
-  - port: frontend-port
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: {{ .Release.Name }}-frontend-svc
+#   labels:
+#     app: frontend-application
+# spec:
+#   selector:
+#     matchLabels:
+#       app: frontend
+#   endpoints:
+#   - port: frontend-port
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: {{ .Release.Name }}-backend-svc
-  labels:
-    app: backend-application
-spec:
-  selector:
-    matchLabels:
-      app: backend
-  endpoints:
-  - port: backend-port
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: {{ .Release.Name }}-backend-svc
+#   labels:
+#     app: backend-application
+# spec:
+#   selector:
+#     matchLabels:
+#       app: backend
+#   endpoints:
+#   - port: backend-port
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: Prometheus
-metadata:
-  name: prometheus
-spec:
-  serviceAccountName: prometheus
-  serviceMonitorSelector:
-    matchLabels:
-      app: frontend-application
-      app: backend-application
-  resources:
-    requests:
-      memory: 400Mi
-  enableAdminAPI: false
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: Prometheus
+# metadata:
+#   name: prometheus
+# spec:
+#   serviceAccountName: prometheus
+#   serviceMonitorSelector:
+#     matchLabels:
+#       app: frontend-application
+#       app: backend-application
+#   resources:
+#     requests:
+#       memory: 400Mi
+#   enableAdminAPI: false
