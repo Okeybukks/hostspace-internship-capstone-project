@@ -14,4 +14,4 @@ images:
   backend:
       repository: achebeh/kanban-backend
       pullPolicy: IfNotPresent
-      tag: "v3"
+      tag: "latest"

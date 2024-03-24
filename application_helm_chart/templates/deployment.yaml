@@ -74,5 +74,10 @@ spec:
             secretKeyRef:
               name: application-secret
               key: MONGODB_URL
+        - name: ALLOWED_ORIGIN
+          valueFrom:
+            secretKeyRef:
+              name: application-secret
+              key: ALLOWED_ORIGIN
         resources: {}
 status: {}

@@ -5,6 +5,11 @@ const logger = require('morgan');
 const cors = require('cors')
 
 const app = express();
+const corsOptions ={
+  origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3000', 
+  credentials:true,   
+  optionSuccessStatus:200
+}
 
 // Middleware for setting custom headers globally
 app.use((req, res, next) => {
