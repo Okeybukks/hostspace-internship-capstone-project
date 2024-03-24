@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-kanbanBackendIP: changeme
+kanbanBackendIP: https://api.achebeh.site
 
 images:
   frontend:
