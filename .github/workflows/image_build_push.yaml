@@ -49,14 +49,14 @@ jobs:
       with:
         context: ./application/backend
         push: true
-        tags: achebeh/kanban-backend:$GITHUB_RUN_NUMBER, achebeh/kanban-backend:latest
+        tags: achebeh/kanban-backend:latest
 
-    - name: Build and push frontend application
-      uses: docker/build-push-action@v5
-      with:
-        context: ./application/frontend
-        push: true
-        tags: achebeh/kanban-backend:$GITHUB_RUN_NUMBER, achebeh/kanban-backend:latest
+    # - name: Build and push frontend application
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     context: ./application/frontend
+    #     push: true
+    #     tags: achebeh/kanban-frontend:latest
 
     # - name: Build Backend Image
     #   working-directory: ./application/backend
