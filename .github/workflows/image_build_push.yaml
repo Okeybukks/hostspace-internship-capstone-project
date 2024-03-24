@@ -45,7 +45,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build Docker backend application image
-      working-directory: ./application/backend
+      working-directory: ./application_source_code/backend
       run: docker build -t achebeh/kanban-backend:latest .
 
     - name: Push Docker image to Docker Hub
