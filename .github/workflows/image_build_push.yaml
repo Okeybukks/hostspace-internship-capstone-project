@@ -49,7 +49,7 @@ jobs:
       run: docker build -t achebeh/kanban-backend:latest .
 
     - name: Push Docker image to Docker Hub
-      run: docker push achebeh/kanban-backend:latest:latest
+      run: docker push achebeh/kanban-backend:latest
 
     # - name: Build and push backend application
     #   uses: docker/build-push-action@v5
