@@ -39,13 +39,13 @@ jobs:
     #   run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Login to Docker Hub
-      uses: docker/login-action@v3
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build Docker backend application image
-      working-directory: ./application_source_code/backend
+      working-directory: application_source_code/backend
       run: docker build -t achebeh/kanban-backend:latest .
 
     - name: Push Docker image to Docker Hub
