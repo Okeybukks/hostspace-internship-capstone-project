@@ -19,7 +19,7 @@ spec:
           enabled: false
       prometheusOperator:
         service:
-          type: NodePort
+          type: ClusterIP
         admissionWebhooks:
           failurePolicy: Ignore
     targetRevision: 57.0.3
