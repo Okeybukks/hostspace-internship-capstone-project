@@ -50,6 +50,7 @@ metadata:
   name: {{ .Release.Name }}-frontend-svc
   labels:
     app: frontend-application
+  namespace: kanban
 spec:
   selector:
     matchLabels:
@@ -64,6 +65,7 @@ metadata:
   name: {{ .Release.Name }}-backend-svc
   labels:
     app: backend-application
+  namespace: kanban
 spec:
   selector:
     matchLabels:
@@ -76,6 +78,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: prometheus
+  namespace: kanban
 spec:
   serviceAccountName: prometheus
   serviceMonitorSelector:
