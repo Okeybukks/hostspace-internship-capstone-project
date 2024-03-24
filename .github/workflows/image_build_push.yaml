@@ -44,12 +44,19 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push backend application
-      uses: docker/build-push-action@v5
-      with:
-        context: ./application/backend
-        push: true
-        tags: achebeh/kanban-backend:latest
+    - name: Build Docker backend application image
+      working-directory: ./application/backend
+      run: docker build -t achebeh/kanban-backend:latest .
+
+    - name: Push Docker image to Docker Hub
+      run: docker push achebeh/kanban-backend:latest:latest
+
+    # - name: Build and push backend application
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     context: ./application/backend/.
+    #     push: true
+    #     tags: achebeh/kanban-backend:latest
 
     # - name: Build and push frontend application
     #   uses: docker/build-push-action@v5
