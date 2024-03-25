@@ -23,7 +23,8 @@ spec:
           extraScrapeConfigs:
             - job_name: 'mongodb'
               static_configs:
-                - targets: ['mongodb-exporter-prometheus-mongodb-exporter:9216'] 
+                - targets:
+                  - mongodb-exporter-prometheus-mongodb-exporter:9216
   syncPolicy:
     automated:
       prune: true
