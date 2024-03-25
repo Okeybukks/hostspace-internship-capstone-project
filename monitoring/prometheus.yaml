@@ -25,7 +25,7 @@ spec:
               static_configs:
                 - targets:
                   - mongodb-exporter-prometheus-mongodb-exporter:9216
-        syncPolicy:
+  syncPolicy:
     automated:
       prune: true
       selfHeal: true
