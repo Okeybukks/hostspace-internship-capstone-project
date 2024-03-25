@@ -72,16 +72,15 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: prometheus
-  namespace: kanban
+  namespace: monitoring
 spec:
+  image: quay.io/prometheus/prometheus
   serviceAccountName: prometheus
-  serviceMonitorSelector:
-    matchExpressions:
-    - key: app
-      operator: In
-      values:
-        - frontend-application
-        - backend-application
+  replicas: 1
+  serviceMonitorNamespaceSelector:
+    matchLabels:
+      kubernetes.io/metadata.name: kanban
+  serviceMonitorSelector: {}
   resources:
     requests:
       memory: 400Mi
