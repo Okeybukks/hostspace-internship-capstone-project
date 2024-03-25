@@ -16,7 +16,8 @@ spec:
       targetRevision: 3.5.0
       helm:
         values: |
-            mongodb.uri: mongodb://username:password@mongo:27017/kanbanDB 
+            mongodb:
+              uri: "mongodb://username:password@mongo.kanban.svc.cluster.local:27017/kanbanDB"
 
   syncPolicy:
     automated:
