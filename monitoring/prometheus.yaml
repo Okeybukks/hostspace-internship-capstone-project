@@ -11,10 +11,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/Okeybukks/hostspace-internship-capstone-project.git
-      targetRevision: HEAD
-      ref: main
-      path: monitoring
     - repoURL: https://prometheus-community.github.io/helm-charts/
       chart: prometheus
       targetRevision: 25.18.0
