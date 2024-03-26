@@ -16,4 +16,4 @@ eksctl create iamserviceaccount \
     --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
     --approve
 
-eksctl create addon --name aws-ebs-csi-driver --cluster $cluster_name --service-account-role-arn arn:aws:iam::732887255406:role/AmazonEKS_EBS_CSI_DriverRole --force # change 0000000000 to account ID
+eksctl create addon --name aws-ebs-csi-driver --cluster $cluster_name --service-account-role-arn arn:aws:iam::000000000000:role/AmazonEKS_EBS_CSI_DriverRole --force # change 0000000000 to account ID
