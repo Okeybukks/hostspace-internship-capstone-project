@@ -52,7 +52,7 @@ managedNodeGroups:
 - instanceType: ${INSTANCE_TYPE}
   amiFamily: ${AMI_FAMILY}
   name: ${CLUSTER_NAME}-ng
-  desiredCapacity: 1
+  desiredCapacity: 2
   minSize: 1
   maxSize: 10
 
