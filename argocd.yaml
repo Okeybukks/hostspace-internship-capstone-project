@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -33,10 +34,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kanban
   syncPolicy:
-    automated:
-      selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -53,10 +53,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: monitoring
   syncPolicy:
-    automated:
-      selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -73,7 +72,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kanban
   syncPolicy:
-    automated:
-      selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true

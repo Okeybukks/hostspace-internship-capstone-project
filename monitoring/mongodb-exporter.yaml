@@ -20,8 +20,5 @@ spec:
               uri: "mongodb://username:password@mongo.kanban.svc.cluster.local:27017/kanbanDB"
 
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true

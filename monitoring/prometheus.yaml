@@ -26,8 +26,5 @@ spec:
                 - targets:
                   - mongodb-exporter-prometheus-mongodb-exporter:9216
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
