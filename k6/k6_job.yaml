@@ -15,11 +15,11 @@ spec:
         # Example of running k6, running the load-tests/generic.js script
         - name: k6
           image: grafana/k6
-          volumeMounts:
-          - mountPath: /k6/test.js
-            name: k6-volume
-            readOnly: true
-          args: ['run', '/k6/test.js']
+          # volumeMounts:
+          # - mountPath: /k6/test.js
+          #   name: k6-volume
+          #   readOnly: true
+          args: ['run', 'https://github.com/Okeybukks/hostspace-internship-capstone-project/blob/main/k6/test.js']
           env:
             # URL to test against - CHANGE THIS!!
             - name: TARGET_URL
@@ -40,10 +40,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 2112
-      volumes:
-      - name: k6-volume
-        hostPath:
-          path: /k6 # directory location on host
-          type: Directory
+      # volumes:
+      # - name: k6-volume
+      #   hostPath:
+      #     path: /k6 # directory location on host
+      #     type: Directory
 
       restartPolicy: Never
