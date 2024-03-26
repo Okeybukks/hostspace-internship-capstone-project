@@ -8,7 +8,7 @@ export CLUSTER_NAME="hostspace-cluster"
 export AWS_DEFAULT_REGION="us-east-1"
 export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 export TEMPOUT="$(mktemp)"
-export INSTANCE_TYPE="t2.medium"
+export INSTANCE_TYPE="t3.medium"
 export AMI_FAMILY="Ubuntu2004"
 
 curl -fsSL https://raw.githubusercontent.com/aws/karpenter-provider-aws/v"${KARPENTER_VERSION}"/website/content/en/preview/getting-started/getting-started-with-karpenter/cloudformation.yaml  > "${TEMPOUT}" \
