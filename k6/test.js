@@ -23,9 +23,7 @@ export let options = {
 export default function () {
   let res = http.get(TARGET_URL)
 
-  check(res, {
-    'Status is ok': (r) => r.status === 200,
-  })
+  check(res, (r) => r.status === 200)
 
   sleep(SLEEP)
 }
