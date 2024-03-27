@@ -19,7 +19,7 @@ spec:
           # - mountPath: /k6/test.js
           #   name: k6-volume
           #   readOnly: true
-          args: ['run', 'https://github.com/Okeybukks/hostspace-internship-capstone-project/blob/main/k6/test.js']
+          args: ['run', 'https://raw.githubusercontent.com/Okeybukks/hostspace-internship-capstone-project/main/k6/test.js']
           env:
             # URL to test against - CHANGE THIS!!
             - name: TARGET_URL
