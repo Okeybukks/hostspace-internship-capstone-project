@@ -7,7 +7,7 @@ import http from 'k6/http'
 
 const TARGET_URL = __ENV.TEST_TARGET || 'https://httpbin.test.k6.io/'
 const RAMP_TIME = __ENV.RAMP_TIME || '5m'
-const RUN_TIME = __ENV.RUN_TIME || '10m'
+const RUN_TIME = __ENV.RUN_TIME || '5m'
 const USER_COUNT = __ENV.USER_COUNT || 30
 const SLEEP = __ENV.SLEEP || 0
 
