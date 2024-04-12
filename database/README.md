@@ -86,7 +86,7 @@ rs.reconfig({
 
 ## Environment Variables and Secrets
 
-This URL `mongodb://username:password@mongo:27017/kanbanDB` is value which is to be passed to the `MONGODB_URL` of the backend deployment but no directly. The value should be stored in the `MONGODB_URL` variable in the .env file which should not be pushed to the public.
+This URL `mongodb://username:password@mongo:27017/kanbanDB` is value which is to be passed to the `MONGODB_URL` of the backend deployment but not directly. The value should be stored in the `MONGODB_URL` variable in the .env file which should not be pushed to the public.
 
 Before pushing to the GitHub cloud repo, run the `secret_creator.py` program which creates a sealed secret that can be pushed to the Github cloud repo.
 
