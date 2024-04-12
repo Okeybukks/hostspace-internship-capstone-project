@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongo
-  # annotations:
-  #   prometheus.io/scrape: 'true'
-  #   prometheus.io/port:   '9090'
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port:   '9090'
   namespace: kanban
   labels:
     name: mongodb
