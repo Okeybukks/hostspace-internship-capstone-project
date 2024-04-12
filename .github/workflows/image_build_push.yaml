@@ -16,28 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    # - uses: hashicorp/setup-terraform@v3
-
-    # - name: Setup AWS Credentials
-    #   uses: aws-actions/configure-aws-credentials@v2
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: us-east-1
-    
-    # - name: Terraform Init
-    #   id: init
-    #   working-directory: ./terraform
-    #   run: terraform init
-
-    # - name: Terraform Apply
-    #   id: apply
-    #   run: terraform apply --auto-approve
-    #   working-directory: ./terraform
-
-    # - name: Authenticate Dockerclient to ECR
-    #   run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
-
+  
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -48,48 +27,11 @@ jobs:
       working-directory: application_source_code/backend
       run: docker build -t achebeh/kanban-backend:latest .
 
+    - name: Build Docker frontend application image
+      working-directory: application_source_code/frontend
+      run: docker build -t achebeh/kanban-frontend:latest .
+
     - name: Push Docker image to Docker Hub
-      run: docker push achebeh/kanban-backend:latest
-
-    # - name: Build and push backend application
-    #   uses: docker/build-push-action@v5
-    #   with:
-    #     context: ./application/backend/.
-    #     push: true
-    #     tags: achebeh/kanban-backend:latest
-
-    # - name: Build and push frontend application
-    #   uses: docker/build-push-action@v5
-    #   with:
-    #     context: ./application/frontend
-    #     push: true
-    #     tags: achebeh/kanban-frontend:latest
-
-    # - name: Build Backend Image
-    #   working-directory: ./application/backend
-    #   run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER .
-
-    # - name: Tag Backend Image
-    #   run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
-
-
-    # - name: Push Backend Image to ECR
-    #   run: |
-    #     docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:$GITHUB_RUN_NUMBER
-    #     docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-backend:latest
-    
-    # - name: Build Frontend Image
-    #   working-directory: ./application/frontend
-    #   run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER .
-  
-    # - name: Tag Backend Image
-    #   run: docker tag ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:latest
-  
-  
-    # - name: Push Backend Image to ECR
-    #   run: |
-    #       docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:$GITHUB_RUN_NUMBER
-    #       docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/kanban-frontend:latest
-      
+      run: docker push achebeh/kanban-frontend:latest      
 
       

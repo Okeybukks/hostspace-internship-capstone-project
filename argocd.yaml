@@ -28,7 +28,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Okeybukks/hostspace-internship-capstone-project.git
-    targetRevision: HEAD
+    targetRevision: branch/final-submission
     path: database
   destination:
     server: https://kubernetes.default.svc
