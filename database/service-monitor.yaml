@@ -4,11 +4,11 @@ metadata:
   name: mongodb-monitor
   namespace: monitoring
   labels:
-    release: prometheus
+    release: prometheus-stack
     app: prometheus
 spec:
   selector:
     matchLabels:
-      app: mongodb
+      name: prometheus-mongodb-exporter
   endpoints:
-  - port: mongodb-port
+  - port: metrics
