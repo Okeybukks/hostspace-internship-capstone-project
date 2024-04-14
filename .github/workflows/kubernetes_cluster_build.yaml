@@ -3,9 +3,10 @@ name: Create Kubernetes Cluster
 run-name: Create Kubernetes Cluster
 
 on:
+  workflow_dispatch:
   push:
     branches:
-    - main
+    - branch/final-submission
     paths:
     - 'kubernetes_cluster/**'
 
