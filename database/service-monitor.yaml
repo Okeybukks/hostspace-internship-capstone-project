@@ -5,10 +5,11 @@ metadata:
   namespace: monitoring
   labels:
     release: prometheus-stack
-    app: prometheus
+    app: prometheus-mongodb-exporter
 spec:
   selector:
     matchLabels:
-      name: prometheus-mongodb-exporter
+      app.kubernetes.io/name: prometheus-mongodb-exporter
+      # release: prometheus-stack
   endpoints:
   - port: metrics
