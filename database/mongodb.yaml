@@ -3,9 +3,9 @@ kind: StatefulSet
 metadata:
   name: mongodb
   namespace: kanban
-  annotations:
-    prometheus.io/scrape: 'true'
-    prometheus.io/port:   '9090'
+  # annotations:
+  #   prometheus.io/scrape: 'true'
+  #   prometheus.io/port:   '9090'
 spec:
   selector:
     matchLabels:
@@ -15,9 +15,9 @@ spec:
   minReadySeconds: 10
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port:   '9090'
+      # annotations:
+      #   prometheus.io/scrape: 'true'
+      #   prometheus.io/port:   '9090'
       labels:
         app: mongodb 
     spec:
