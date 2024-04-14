@@ -69,3 +69,7 @@ jobs:
               run: |
                 kubectl create -f lets-encrypt-staging.yaml 
                 kubectl create -f lets-encrypt-production.yaml 
+
+            - name: Setting Up EBS storageclass add-ons for the cluster
+              working-directory: ./storageclass_configurations
+              run: bash storageclass_setup.sh

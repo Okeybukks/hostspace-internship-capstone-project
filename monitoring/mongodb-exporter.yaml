@@ -1,24 +1,24 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: mongodb-exporter
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     namespace: monitoring
-#     server: https://kubernetes.default.svc
-#   project: default
-#   sources:
-#     - repoURL: https://prometheus-community.github.io/helm-charts
-#       chart: prometheus-mongodb-exporter
-#       targetRevision: 3.5.0
-#       helm:
-#         values: |
-#             mongodb:
-#               uri: "mongodb://username:password@mongo.kanban.svc.cluster.local:27017/kanbanDB"
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb-exporter
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: prometheus-mongodb-exporter
+      targetRevision: 3.5.0
+      helm:
+        values: |
+            mongodb:
+              uri: "mongodb://username:password@mongo.kanban.svc.cluster.local:27017/kanbanDB"
 
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
