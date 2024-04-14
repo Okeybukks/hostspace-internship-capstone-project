@@ -2,8 +2,11 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: mongodb-storageclass
-provisioner: rancher.io/local-path # Amazon EBS CSI driver
-volumeBindingMode: WaitForFirstConsumer
+provisioner: ebs.csi.aws.com # Amazon EBS CSI driver
+parameters:
+  type: gp2
+  encrypted: 'true' # EBS volumes will always be encrypted by default
+volumeBindingMode: WaitForFirstConsumer # EBS volumes are AZ specific
 reclaimPolicy: Delete
 mountOptions:
 - debug
