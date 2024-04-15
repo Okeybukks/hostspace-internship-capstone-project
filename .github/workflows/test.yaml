@@ -24,9 +24,10 @@ jobs:
       - name: Check edited yaml files
         id: check_edited_files
         run: |
-          files_changed=$(git diff --name-only HEAD^ HEAD | grep '\.yaml$')
-          # files_changed="${files_changed//$'\n'/ }"
-          # echo "edited_files=$files_changed" >> "$GITHUB_OUTPUT"
+          files_changed = $(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          # files_changed=$(git diff --name-only HEAD^ HEAD | grep '\.yaml$')
+          # # files_changed="${files_changed//$'\n'/ }"
+          # # echo "edited_files=$files_changed" >> "$GITHUB_OUTPUT"
           echo $files_changed
 
       # - name: Checkout Helm Chart repository2
