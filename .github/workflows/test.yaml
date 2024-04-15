@@ -18,7 +18,8 @@ jobs:
           repository: Okeybukks/hostspacecloud
           ref: main
           path: .
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          token: ${{ secrets.TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: check pulled repo
         run: ls
