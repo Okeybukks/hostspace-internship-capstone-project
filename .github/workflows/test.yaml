@@ -19,6 +19,6 @@ jobs:
           ref: main
           path: .
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: check pulled repo
         run: ls
