@@ -17,7 +17,7 @@ jobs:
         with:
           repository: Okeybukks/hostspacecloud
           ref: feature/test
-          # path: .
+          path: .
       
       - name: check pulled repo
         run: ls
