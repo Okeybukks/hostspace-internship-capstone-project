@@ -27,13 +27,10 @@ jobs:
           ref: feature/test
           path: helm-chart2
         
-      # - name: Install Helm
-      #   run: |
-      #     sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
-      #     sudo chmod +x /usr/bin/helm
+      - name: Install Helm
+        run: |
+          sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+          sudo chmod +x /usr/bin/helm
       
       - name: check pulled repo
-        run: ls helm-chart
-
-      - name: check pulled repo2
-        run: ls helm-chart2
+        run: helm template helm-chart2/application_helm_chart --values helm-chart/values.yaml
