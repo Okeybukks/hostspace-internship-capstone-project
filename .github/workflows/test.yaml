@@ -24,7 +24,7 @@ jobs:
       - name: Check edited yaml files
         id: check_edited_files
         run: |
-          files_changed=$(git diff --name-only)
+          files_changed=$(git diff --name-only HEAD^ | grep '\.yaml$')
           files_changed="${files_changed//$'\n'/ }"
           echo "edited_files=$files_changed" >> "$GITHUB_OUTPUT"
           echo $edited_files
