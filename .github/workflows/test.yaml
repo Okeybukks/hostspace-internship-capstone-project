@@ -19,6 +19,7 @@ jobs:
           ref: main
           path: helm-chart
           token: ${{ secrets.TOKEN }}
+          fetch-depth: 2
 
       - name: Check edited yaml files
         id: check_edited_files
