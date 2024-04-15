@@ -27,7 +27,6 @@ jobs:
           ref: feature/test
           path: helm-chart2
         
-
       # - name: Install Helm
       #   run: |
       #     sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
