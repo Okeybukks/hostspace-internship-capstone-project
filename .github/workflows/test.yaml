@@ -12,14 +12,22 @@ jobs:
       HELM_VERSION: 3.14.3
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Helm Chart repository
+      # - name: Checkout Helm Chart repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: Okeybukks/hostspacecloud
+      #     ref: main
+      #     path: helm-chart
+      #     token: ${{ secrets.TOKEN }}
+      #     fetch-depth: 0
+
+      - name: Checkout Helm Chart repository2
         uses: actions/checkout@v3
         with:
-          repository: Okeybukks/hostspacecloud
-          ref: main
-          path: helm-chart
-          token: ${{ secrets.TOKEN }}
-          fetch-depth: 0
+          repository: Okeybukks/hostspace-internship-capstone-project
+          ref: feature/test
+          path: helm-chart2
+        
 
       - name: Check edited yaml files
         id: check_edited_files
