@@ -17,9 +17,17 @@ jobs:
         with:
           repository: Okeybukks/hostspacecloud
           ref: main
-          path: .
+          path: helm-chart
           token: ${{ secrets.TOKEN }}
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Checkout Helm Chart repository2
+        uses: actions/checkout@v3
+        path: helm
+
+      # - name: Install Helm
+      #   run: |
+      #     sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+      #     sudo chmod +x /usr/bin/helm
+      
       - name: check pulled repo
-        run: ls
+        run: ls helm-chart
