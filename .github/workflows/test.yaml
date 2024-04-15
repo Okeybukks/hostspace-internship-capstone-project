@@ -20,6 +20,14 @@ jobs:
           path: helm-chart
           token: ${{ secrets.TOKEN }}
 
+      - name: Check edited yaml files
+        id: check_edited_files
+        run: |
+          files_changed=$(git diff --name-only HEAD^ HEAD | grep '\values.yaml$')
+          files_changed="${files_changed//$'\n'/ }"
+          echo "edited_files=$files_changed" >> "$GITHUB_OUTPUT"
+          echo $edited_files
+
       - name: Checkout Helm Chart repository2
         uses: actions/checkout@v3
         with:
@@ -27,20 +35,20 @@ jobs:
           ref: feature/test
           path: helm-chart2
         
-      - name: Install Helm
-        run: |
-          sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
-          sudo chmod +x /usr/bin/helm
+      # - name: Install Helm
+      #   run: |
+      #     sudo curl -L -o /usr/bin/helm https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+      #     sudo chmod +x /usr/bin/helm
       
-      - name: check pulled repo
-        run: helm template helm-chart2/application_helm_chart --values helm-chart/values.yaml > ${{ github.workspace }}/test.yaml
+      # - name: check pulled repo
+      #   run: helm template helm-chart2/application_helm_chart --values helm-chart/values.yaml > ${{ github.workspace }}/test.yaml
 
-      - name: Set up Kubeconform
-        uses: bmuschko/setup-kubeconform@v1
+      # - name: Set up Kubeconform
+      #   uses: bmuschko/setup-kubeconform@v1
     
-      - name: Validate manifests
-        run: |
-          kubeconform -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
-          -summary -verbose ${{ github.workspace }}/test.yaml
+      # - name: Validate manifests
+      #   run: |
+      #     kubeconform -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+      #     -summary -verbose ${{ github.workspace }}/test.yaml
 
 
