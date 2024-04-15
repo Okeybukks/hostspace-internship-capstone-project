@@ -34,3 +34,6 @@ jobs:
       
       - name: check pulled repo
         run: ls helm-chart
+
+      - name: check pulled repo2
+        run: ls helm-chart2
