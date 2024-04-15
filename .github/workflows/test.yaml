@@ -15,9 +15,9 @@ jobs:
       - name: Checkout Helm Chart repository
         uses: actions/checkout@v3
         with:
-          repository: Okeybukks/sample-reactjs-app
-          ref: main
-          path: .
+          repository: Okeybukks/hostspacecloud
+          ref: feature/test
+          # path: .
       
       - name: check pulled repo
         run: ls
