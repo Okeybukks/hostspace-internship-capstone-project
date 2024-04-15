@@ -33,4 +33,14 @@ jobs:
           sudo chmod +x /usr/bin/helm
       
       - name: check pulled repo
-        run: helm template helm-chart2/application_helm_chart --values helm-chart/values.yaml
+        run: helm template helm-chart2/application_helm_chart --values helm-chart/values.yaml > ${{ github.space }}/test.yaml
+
+      - name: Set up Kubeconform
+        uses: bmuschko/setup-kubeconform@v1
+    
+      - name: Validate manifests
+        run: |
+          kubeconform -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+          -summary -verbose ${{ github.space }}/test.yaml
+
+
