@@ -15,9 +15,10 @@ jobs:
       - name: Checkout Helm Chart repository
         uses: actions/checkout@v3
         with:
-          repository: Okeybukks/Altschool-Final-Cloud-Project
+          repository: Okeybukks/hostspacecloud
           ref: main
           path: .
-      
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: check pulled repo
         run: ls
