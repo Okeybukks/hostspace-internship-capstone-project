@@ -30,4 +30,4 @@ jobs:
       #     sudo chmod +x /usr/bin/helm
       
       - name: check pulled repo
-        run: ls helm-chart
+        run: ls
