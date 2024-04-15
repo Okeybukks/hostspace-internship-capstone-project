@@ -1,0 +1,23 @@
+name: 'Helm Templating'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/helm-lintting'
+
+jobs:
+  templating:
+    env:
+      HELM_VERSION: 3.14.3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Helm Chart repository
+        uses: actions/checkout@v3
+        with:
+          repository: Okeybukks/sample-reactjs-app
+          ref: main
+          path: .
+      
+      - name: check pulled repo
+        run: ls
