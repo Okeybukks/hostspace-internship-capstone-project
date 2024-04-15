@@ -19,12 +19,12 @@ jobs:
           ref: main
           path: helm-chart
           token: ${{ secrets.TOKEN }}
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Check edited yaml files
         id: check_edited_files
         run: |
-          files_changed=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          files_changed=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
           # files_changed=$(git diff --name-only HEAD^ HEAD | grep '\.yaml$')
           # # files_changed="${files_changed//$'\n'/ }"
           # # echo "edited_files=$files_changed" >> "$GITHUB_OUTPUT"
