@@ -20,8 +20,12 @@ jobs:
           path: helm-chart
           token: ${{ secrets.TOKEN }}
 
-      # - name: Checkout Helm Chart repository2
-      #   uses: actions/checkout@v3
+      - name: Checkout Helm Chart repository2
+        uses: actions/checkout@v3
+        with:
+          repository: Okeybukks/hostspace-internship-capstone-project
+          ref: feature/test
+          path: helm-chart2
         
 
       # - name: Install Helm
@@ -30,4 +34,4 @@ jobs:
       #     sudo chmod +x /usr/bin/helm
       
       - name: check pulled repo
-        run: ls -l helm-chart
+        run: ls helm-chart
